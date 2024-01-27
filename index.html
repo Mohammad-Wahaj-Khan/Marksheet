@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <title>Mark Sheet</title>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Mark Sheet</h2>
+
+        <!-- Subject 1 to 6 Input Fields -->
+        <div class="mb-4">
+            <label for="subject1" class="block text-gray-700 text-sm mb-2">Math:</label>
+            <input type="number" id="subject1" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="subject2" class="block text-gray-700 text-sm mb-2">Physics:</label>
+            <input type="number" id="subject2" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="subject3" class="block text-gray-700 text-sm mb-2">Computer:</label>
+            <input type="number" id="subject3" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="subject4" class="block text-gray-700 text-sm mb-2">Urdu:</label>
+            <input type="number" id="subject4" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="subject5" class="block text-gray-700 text-sm mb-2">PST:</label>
+            <input type="number" id="subject5" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="subject6" class="block text-gray-700 text-sm mb-2">English:</label>
+            <input type="number" id="subject6" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500" required>
+        </div>
+
+        <button onclick="calculatePercentage()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300">Calculate</button>
+
+        <div id="result" class="mt-6 font-bold text-blue-500"></div>
+    </div>
+
+    <script>
+        function calculatePercentage() {
+            var subject1 = parseFloat(document.getElementById("subject1").value) || 0;
+            var subject2 = parseFloat(document.getElementById("subject2").value) || 0;
+            var subject3 = parseFloat(document.getElementById("subject3").value) || 0;
+            var subject4 = parseFloat(document.getElementById("subject4").value) || 0;
+            var subject5 = parseFloat(document.getElementById("subject5").value) || 0;
+            var subject6 = parseFloat(document.getElementById("subject6").value) || 0;
+
+            var totalMarks = subject1 + subject2 + subject3 + subject4 + subject5 + subject6;
+            var percentage = (totalMarks / 6).toFixed(2);
+
+            var resultElement = document.getElementById("result");
+
+            if (percentage >= 90) {
+                resultElement.innerText = "Percentage: " + percentage + "% - Grade: A+";
+            } else if (percentage >= 80) {
+                resultElement.innerText = "Percentage: " + percentage + "% - Grade: A";
+            } else if (percentage >= 70) {
+                resultElement.innerText = "Percentage: " + percentage + "% - Grade: B";
+            } else {
+                resultElement.innerText = "Percentage: " + percentage + "% - Better luck next time";
+            }
+        }
+    </script>
+</body>
+</html>
